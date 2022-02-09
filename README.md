@@ -3,6 +3,10 @@ Para clonar o repositório:
 ```sh
 git clone https://github.com/anajur/flashcards.git
 ```
+Para baixar as novas alterações do repositório
+```sh
+git pull
+```
 
 Para salvar as alterações feitas no seu pc (local)
 
