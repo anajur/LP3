@@ -13,11 +13,13 @@ import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Setter
 @Getter
 @Table(name = "categoria")
 @Entity
+@ToString(of = { "titulo" })
 public class Categoria {
 
 	@Id
@@ -26,7 +28,7 @@ public class Categoria {
 
 	@Column(length = 30)
 	private String titulo;
-	
+
 	@OneToMany(mappedBy = "categoria", fetch = FetchType.LAZY)
 	private List<Flashcard> flashcards;
 

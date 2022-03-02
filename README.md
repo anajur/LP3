@@ -1,42 +1,12 @@
-# Comandos git
-Para clonar o repositório:
-```sh
-git clone https://github.com/anajur/flashcards.git
-```
-Para baixar as novas alterações do repositório
-```sh
-git pull
-```
+# Flashcards 🗂️
+O sistema tem como objetivo o gerenciamento de flashcards de estudo.
 
-Para salvar as alterações feitas no seu pc (local)
+## Tecnologias 🔨
 
-## 1
-```sh
-git add .
-or
-git add nome_arquivo
-```
-## 2
-```sh
-git commit -m "mensagem"
-```
-
-Para enviar ao repositório suas alterações:
-```sh
-git push
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- Java
+## Funcionalidades  🧮
+- Cadastrar flashcard
+- Visualizar flashcards
+- Separar flashcards por categoria
+- Visualizar quantas vezes flashcard foi aberto
+- Visualizar flashcard aleatório

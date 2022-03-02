@@ -20,14 +20,14 @@ public class Flashcard {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
+
 	@ManyToOne
 	private Categoria categoria;
-	
+
 	private String titulo;
-	
+
 	private Integer contador;
-	
+
 	private String descricao;
 
 }
