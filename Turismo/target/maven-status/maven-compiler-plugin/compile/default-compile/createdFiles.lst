@@ -1,0 +1,3 @@
+br\ifsul\dto\repository\controllers\Cidade.class
+br\ifsul\controller\CidadeController.class
+br\ifsul\repository\CidadeRepository.class
