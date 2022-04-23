@@ -22,9 +22,9 @@ public class CidadeController {
     }
 
     
-    @GetMapping(value = "/{nome}")
-    public ResponseEntity<Cidade> buscarCidadeNome(@PathVariable String nome) {
-        Cidade obj = CidadeService.buscarCidadeNome(nome);
+    @GetMapping(value = "/{nome}/{estado}/{pais}")
+    public ResponseEntity<Cidade> buscarCidadeNome(@PathVariable String nome, String estado, String pais) throws Exception {
+        Cidade obj = service.findByNomeAndEstadoAndPais(nome, estado, pais);
         return ResponseEntity.ok().body(obj);
     }
   

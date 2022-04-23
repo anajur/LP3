@@ -1,5 +1,7 @@
 package br.ifsul.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,4 +20,10 @@ public class PontoTuristicoService {
 	        repository.save(pontoturistico);
 			return pontoturistico;
 	    }
+	    
+	    public PontoTuristico findByCidadeAndDescricao(Cidade cidade, String descricao) throws Exception {
+	        Optional<PontoTuristico> obj = repository.findByCidadeAndDescricao(cidade, descricao);  
+	        return obj.orElseThrow(() -> new Exception("Ponto Turístico não encontrado! " ));
+	    }
 }
+

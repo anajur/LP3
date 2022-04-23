@@ -1,11 +1,15 @@
 package br.ifsul.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.ifsul.dto.Cidade;
 import br.ifsul.dto.PontoTuristico;
 import br.ifsul.service.PontoTuristicoService;
 
@@ -20,4 +24,11 @@ public class PontoTuristicoController {
         return service.adicionarPontoTuristico(pontoturistico);
     }
 
+    @GetMapping(value = "{id}/{descricao}")
+    public ResponseEntity<PontoTuristico> buscarPontoTuristico(@PathVariable Cidade cidade, String descricao) throws Exception {
+        PontoTuristico obj = service.findByCidadeAndDescricao(cidade, descricao);
+        return ResponseEntity.ok().body(obj);
+    }
+  
+    
 }

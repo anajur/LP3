@@ -21,9 +21,9 @@ public class CidadeService {
         return cidade;
     }
     
-    public Cidade buscarCidadeNome(String nome) {
-        Optional<Cidade> obj = repository.buscarCidadeNome(nome); 
-        return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Nome: " + nome + ", Estado"+ CidadeService.class.getName()));
+    public Cidade findByNomeAndEstadoAndPais(String nome, String estado, String pais) throws Exception {
+        Optional<Cidade> obj = repository.findByNomeAndEstadoAndPais(nome, estado, pais); 
+        return obj.orElseThrow(() -> new Exception("Cidade não encontrada! Nome: " + nome ));
     }
     
 
