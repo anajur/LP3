@@ -1,5 +1,6 @@
 package br.ifsul.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,11 +12,12 @@ import br.ifsul.service.PontoTuristicoService;
 @RestController
 @RequestMapping("/pontoturistico")
 public class PontoTuristicoController {
+    @Autowired
     private PontoTuristicoService service;
 
-    @PostMapping("/adicionar")
-    void adicionarPontoTuristico(@RequestBody PontoTuristico pontoturistico) {
-        service.adicionarPontoTuristico(pontoturistico);
+    @PostMapping()
+    PontoTuristico adicionarPontoTuristico(@RequestBody PontoTuristico pontoturistico) {
+        return service.adicionarPontoTuristico(pontoturistico);
     }
 
 }

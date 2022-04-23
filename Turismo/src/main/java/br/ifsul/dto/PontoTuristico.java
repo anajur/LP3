@@ -25,11 +25,11 @@ public class PontoTuristico {
 
     @Column(columnDefinition = "VARCHAR(250)")
     private String descricao;
+
     @Column(precision=10, scale=8)
-    @Type(type = "big_decimal")
     private float latitude;
+
     @Column(precision=10, scale=8)
-    @Type(type = "big_decimal")
     private float longitude;
 
     @JoinColumn(name = "idCidade")
