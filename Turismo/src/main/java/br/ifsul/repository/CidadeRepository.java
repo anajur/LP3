@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CidadeRepository extends JpaRepository<Cidade, Integer> {
 	
-	Optional<Cidade> findByNome(String nome);
-	Optional<Cidade> findByEstado(String estado);
-	Optional<Cidade> findByPais(String pais);
+	Optional<Cidade> buscarCidadeNome(String nome);
+	Optional<Cidade> buscaCidadeEstado(String estado);
+	Optional<Cidade> buscarCidadePais(String pais);
 }

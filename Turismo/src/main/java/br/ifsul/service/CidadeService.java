@@ -5,6 +5,7 @@ import br.ifsul.repository.CidadeRepository;
 
 import java.util.Optional;
 
+import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,8 +22,8 @@ public class CidadeService {
     }
     
     public Cidade buscarCidadeNome(String nome) {
-        Optional<Cidade> obj = repository.findByNome(nome); 
-        return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! CPF: " + cpf + ", Tipo"+ PacienteService.class.getName()));
+        Optional<Cidade> obj = repository.buscarCidadeNome(nome); 
+        return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! Nome: " + nome + ", Estado"+ CidadeService.class.getName()));
     }
     
 

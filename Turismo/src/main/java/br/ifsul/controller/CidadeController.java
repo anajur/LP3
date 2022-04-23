@@ -22,10 +22,9 @@ public class CidadeController {
     }
 
     
-    
-    @GetMapping(value = "/{cpf}")
-    public ResponseEntity<Cidade> buscar(@PathVariable String nome) {
-        Cidade obj = CidadeService.findByNome(nome);
+    @GetMapping(value = "/{nome}")
+    public ResponseEntity<Cidade> buscarCidadeNome(@PathVariable String nome) {
+        Cidade obj = CidadeService.buscarCidadeNome(nome);
         return ResponseEntity.ok().body(obj);
     }
   
