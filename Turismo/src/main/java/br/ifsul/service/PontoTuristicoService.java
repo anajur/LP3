@@ -11,6 +11,8 @@ import br.ifsul.dto.PontoTuristico;
 import br.ifsul.repository.CidadeRepository;
 import br.ifsul.repository.PontoTuristicoRepository;
 
+import java.util.List;
+
 @Service
 public class PontoTuristicoService {
 
@@ -46,5 +48,14 @@ public class PontoTuristicoService {
             repository.save(ponto);
         });
     }
+	    public PontoTuristico adicionarPontoTuristico(PontoTuristico pontoturistico) {
+	        repository.save(pontoturistico);
+			return pontoturistico;
+	    }
+
+		public List<PontoTuristico> pesquisaPontosPorGeolocalizacao(float lat, float lgn, double distancia) {
+		return	repository.pesquisarPorGeolocalizacao(lat,lgn, distancia);
+
+		}
 }
 
