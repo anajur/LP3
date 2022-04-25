@@ -13,21 +13,23 @@ import br.ifsul.dto.Cidade;
 import br.ifsul.dto.PontoTuristico;
 import br.ifsul.service.PontoTuristicoService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/pontoturistico")
 public class PontoTuristicoController {
     @Autowired
     private PontoTuristicoService service;
 
-    @PostMapping()
+    @PostMapping("/adicionar")
     PontoTuristico adicionarPontoTuristico(@RequestBody PontoTuristico pontoturistico) {
         return service.adicionarPontoTuristico(pontoturistico);
     }
 
-    @GetMapping(value = "{id}/{descricao}")
-    public ResponseEntity<PontoTuristico> buscarPontoTuristico(@PathVariable Cidade cidade, String descricao) throws Exception {
-        PontoTuristico obj = service.findByCidadeAndDescricao(cidade, descricao);
-        return ResponseEntity.ok().body(obj);
+    @GetMapping(value = "/{idCidade}/{descricao}")
+    public List<PontoTuristico> buscarPontoTuristico(@PathVariable int idCidade, @PathVariable String descricao) throws Exception {
+
+        return service.buscarPorCidadeDescricao(idCidade, descricao);
     }
   
     
