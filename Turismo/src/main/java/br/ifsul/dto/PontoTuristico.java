@@ -38,6 +38,8 @@ public class PontoTuristico {
     @Column(precision=10, scale=8)
     private float longitude;
 
+    private Double nota;
+
     @JoinColumn(name = "idCidade")
     @ManyToOne
     @JsonIgnore

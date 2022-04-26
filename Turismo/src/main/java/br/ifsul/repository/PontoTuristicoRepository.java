@@ -16,4 +16,8 @@ import org.springframework.data.repository.query.Param;
 	@Query(value = "select p from PontoTuristico p where p.cidade=?1 and p.descricao LIKE CONCAT('%', ?2, '%')")
 	List<PontoTuristico> buscarPorCidadeDescricao(Cidade cidade, String descricao);
 
+	List<PontoTuristico> findByCidade(Cidade cidade);
+
+	Optional<PontoTuristico>findById(Integer id);
+
 }
