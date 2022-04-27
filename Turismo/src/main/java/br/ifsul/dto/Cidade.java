@@ -1,10 +1,6 @@
 package br.ifsul.dto;
 
-import com.sun.istack.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -16,25 +12,22 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Cidade implements Serializable{
+public class Cidade implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idCidade")
     private Integer idCidade;
 
-    @NotNull
-    @Column(columnDefinition = "VARCHAR(60)")
+    @Column(columnDefinition = "VARCHAR(60)", nullable=false)
     private String nome;
 
-    @Column(columnDefinition = "VARCHAR(250)")
+    @Column(columnDefinition = "VARCHAR(250)", nullable=false)
     private String descricao;
 
-    @NotNull
-    @Column(columnDefinition = "VARCHAR(60)")
+    @Column(columnDefinition = "VARCHAR(60)", nullable=false)
     private String estado;
 
-    @NotNull
     @Column(columnDefinition = "VARCHAR(60)")
     private String pais;
 

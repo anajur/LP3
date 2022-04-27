@@ -23,7 +23,15 @@ public class PontoTuristicoService {
     public CidadeRepository cidadeRepository;
 
     public PontoTuristico adicionarPontoTuristico(PontoTuristico pontoturistico) {
+        repository.findByTitulo(pontoturistico.getTitulo()).ifPresent(acao -> {
+            try {
+                throw new Exception("Ponto Turistico já cadastrado.");
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        });
         repository.save(pontoturistico);
+
         return pontoturistico;
     }
 
@@ -37,7 +45,7 @@ public class PontoTuristicoService {
     }
 
     public void atribuirNota(Integer id, Double notaAtribuida) throws Exception {
-        if(notaAtribuida > 5.0 || notaAtribuida < 0) throw new Exception("A nota deve estar entre 0 e 5");
+        if (notaAtribuida > 5.0 || notaAtribuida < 0) throw new Exception("A nota deve estar entre 0 e 5");
         repository.findById(id).ifPresent(ponto ->
         {
             Double nota = notaAtribuida;
@@ -48,14 +56,11 @@ public class PontoTuristicoService {
             repository.save(ponto);
         });
     }
-	    public PontoTuristico adicionarPontoTuristico(PontoTuristico pontoturistico) {
-	        repository.save(pontoturistico);
-			return pontoturistico;
-	    }
 
-		public List<PontoTuristico> pesquisaPontosPorGeolocalizacao(float lat, float lgn, double distancia) {
-		return	repository.pesquisarPorGeolocalizacao(lat,lgn, distancia);
 
-		}
+    public List<PontoTuristico> pesquisaPontosPorGeolocalizacao(float lat, float lgn, double distancia) {
+        return repository.pesquisarPorGeolocalizacao(lat, lgn, distancia);
+
+    }
 }
 

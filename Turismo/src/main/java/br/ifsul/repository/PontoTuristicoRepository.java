@@ -11,19 +11,21 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 
-	public interface PontoTuristicoRepository extends JpaRepository<PontoTuristico, Integer> {
+public interface PontoTuristicoRepository extends JpaRepository<PontoTuristico, Integer> {
 
-	@Query(value = "select p from PontoTuristico p where p.cidade=?1 and p.descricao LIKE CONCAT('%', ?2, '%')")
-	List<PontoTuristico> buscarPorCidadeDescricao(Cidade cidade, String descricao);
+    @Query(value = "select p from PontoTuristico p where p.cidade=?1 and p.descricao LIKE CONCAT('%', ?2, '%')")
+    List<PontoTuristico> buscarPorCidadeDescricao(Cidade cidade, String descricao);
 
-	List<PontoTuristico> findByCidade(Cidade cidade);
+    List<PontoTuristico> findByCidade(Cidade cidade);
 
-	Optional<PontoTuristico>findById(Integer id);
+    Optional<PontoTuristico> findByTitulo(String nome);
+    Optional<PontoTuristico> findById(Integer id);
 
     String HAVERSINE_FORMULA = "(6371.0088 * acos(cos(radians(:latitude)) * cos(radians(s.latitude)) *" +
             " cos(radians(s.longitude) - radians(:longitude)) + sin(radians(:latitude)) * sin(radians(s.latitude))))";
 
-    @Query("SELECT s FROM PontoTuristico s WHERE " + HAVERSINE_FORMULA + " < :distanciaMaxima ORDER BY "+ HAVERSINE_FORMULA + " DESC")
+    @Query("SELECT s FROM PontoTuristico s WHERE " + HAVERSINE_FORMULA + " < :distanciaMaxima ORDER BY " + HAVERSINE_FORMULA + " DESC")
     List<PontoTuristico> pesquisarPorGeolocalizacao(@Param("latitude") float latitude, @Param("longitude") float longitude, @Param("distanciaMaxima") double distancia);
 
+    Optional<PontoTuristico> findByCidadeAndTitulo(Cidade cidade, String titulo);
 }

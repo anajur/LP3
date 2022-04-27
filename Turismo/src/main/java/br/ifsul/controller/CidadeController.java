@@ -18,7 +18,7 @@ public class CidadeController {
     @PostMapping("/adicionar")
     @ResponseStatus(code = HttpStatus.CREATED)
     public Cidade adicionarCidade(@RequestBody Cidade cidade) {
-       return service.adicionarCidade(cidade);
+        return service.adicionarCidade(cidade);
     }
 
     @ResponseStatus(code = HttpStatus.OK)

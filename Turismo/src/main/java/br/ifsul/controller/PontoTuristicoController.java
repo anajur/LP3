@@ -40,8 +40,11 @@ public class PontoTuristicoController {
     @PutMapping(value = "/nota")
     void atribuirNota(@RequestBody AtribuirNotaRequest request) throws Exception {
         service.atribuirNota(request.getId(), request.getNota());
+    }
+
     @GetMapping("")
-    List<PontoTuristico> pesquisaPontosPorGeolocalizacao(@RequestParam Float latitude, @RequestParam Float longitude, @RequestParam Double distancia) {
-        return service.pesquisaPontosPorGeolocalizacao(latitude, longitude,  distancia);
+    List<PontoTuristico> pesquisaPontosPorGeolocalizacao(@RequestParam Float latitude, @RequestParam Float
+            longitude, @RequestParam Double distancia) {
+        return service.pesquisaPontosPorGeolocalizacao(latitude, longitude, distancia);
     }
 }
